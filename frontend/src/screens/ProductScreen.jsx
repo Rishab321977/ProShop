@@ -1,31 +1,31 @@
-import {useState} from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
-import {Link} from 'react-router-dom';
-import {useGetProductDetailsQuery} from '../slices/productsApiSlice';
-import {Form, Row, Col, Button, Image, ListGroup, Card} from 'react-bootstrap';
-import {useDispatch} from 'react-redux';
-import Rating from '../components/Rating';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
-import {addToCart} from '../slices/cartSlice';
+import {useState} from 'react'
+import {useParams, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import {useGetProductDetailsQuery} from '../slices/productsApiSlice'
+import {Form, Row, Col, Button, Image, ListGroup, Card} from 'react-bootstrap'
+import {useDispatch} from 'react-redux'
+import Rating from '../components/Rating'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import {addToCart} from '../slices/cartSlice'
 
 const ProductScreen = () => {
-  const [qty, setQty] = useState(1);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [qty, setQty] = useState(1)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const {id: productId} = useParams();
+  const {id: productId} = useParams()
 
   const {
     data: product,
     isLoading,
     error,
-  } = useGetProductDetailsQuery(productId);
+  } = useGetProductDetailsQuery(productId)
 
   const addToCartHandler = () => {
-    dispatch(addToCart({...product, qty}));
-    navigate('/cart');
-  };
+    dispatch(addToCart({...product, qty}))
+    navigate('/cart')
+  }
 
   return (
     <>
@@ -118,7 +118,7 @@ const ProductScreen = () => {
         </Row>
       )}
     </>
-  );
-};
+  )
+}
 
-export default ProductScreen;
+export default ProductScreen
