@@ -96,8 +96,13 @@ const OrderScreen = () => {
   }
 
   const deliverHandler = async () => {
-    await deliverOrder(orderId)
-    refetch()
+    try {
+      await deliverOrder(orderId)
+      refetch()
+      toast.success('Order Delivered')
+    } catch (error) {
+      toast.error(error?.data?.message || error.error)
+    }
   }
 
   return isLoading ? (
